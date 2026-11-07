@@ -2,10 +2,15 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-GjXSVchRnT7d1PmIOLtreCaYb/H1RLShWi8H3gJrSDc=' 'sha256-Sxt2BEvQCgPjdkCFhm2DXP1g/kKj5TDMabeLS28gWzE=' 'sha256-h+WNSju1n+8FlB6liB4QQuAwl3Wh7DqTdCo4HXXHySs='; style-src 'unsafe-inline'; img-src 'self' data:; font-src data:; connect-src 'self'; manifest-src 'self'; worker-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Códice de las Noches</title>
 <meta name="description" content="Consulta de reglas de Vampiro: Edad Oscura por edición">
 <meta name="theme-color" content="#1d1a22">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="googlebot" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Códice">
@@ -13,6 +18,7 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script>if(window.top!==window.self){try{window.top.location=window.self.location}catch(e){document.documentElement.style.display='none'}}</script>
 <style>
 :root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 body{margin:0}
@@ -118,16 +124,55 @@ mark{background:var(--gold-soft);color:inherit;border-radius:2px}
   aside.idx{display:none}
   .idxsel{display:block;width:100%;padding:8px;border:1px solid var(--line);border-radius:6px;background:var(--panel);margin-bottom:12px}
   .cols{grid-template-columns:minmax(0,1fr)}
-  .brand{font-size:1.35rem}
+  .brand{font-size:1.35rem;white-space:normal}
+  .brand small{letter-spacing:.06em}
   .nocturne .ghead h2{font-size:1.5rem}
   .nocturne .ghead p{font-size:.92rem}
   .sigil{width:44px;height:44px}.sigil svg{width:26px;height:26px}
   .whisper{font-size:.9rem}
 }
 
+
+/* ---- Tema y portada ---- */
+main.noidx{grid-template-columns:minmax(0,1fr)}
+body.is-home .top .search,body.is-home .top .edpick{display:none}
+body.is-home .tools{margin-left:auto}
+.tools{display:flex;gap:8px;align-items:center;margin-left:auto}
+.iconbtn{border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:5px 11px;cursor:pointer;display:inline-flex;gap:6px;align-items:center;font-size:.85rem;color:var(--ink)}
+.iconbtn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+details.opts{position:relative}
+details.opts summary{list-style:none}
+details.opts summary::-webkit-details-marker{display:none}
+details.opts .panel{position:absolute;right:0;top:calc(100% + 6px);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px 14px;z-index:6;min-width:240px;box-shadow:0 6px 20px rgba(0,0,0,.18);display:grid;gap:10px;font-size:.9rem}
+details.opts .panel label{display:flex;gap:8px;align-items:center;cursor:pointer}
+.brand{cursor:pointer}
+.home{display:grid;gap:22px;max-width:980px;margin:0 auto}
+.home h3{font-family:var(--f-display);font-weight:400;font-size:1.35rem;margin:0 0 4px}
+.home .hint{color:var(--muted);margin:0 0 10px;font-size:.95rem}
+.step{display:flex;gap:10px;align-items:baseline}
+.step b{font:500 .75rem var(--f-mono);color:var(--panel);background:var(--accent);border-radius:999px;padding:2px 8px}
+.edgrid{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.edbtn{text-align:left;border:1px solid var(--line);background:var(--panel);border-radius:10px;padding:12px 14px;cursor:pointer;display:grid;gap:4px;color:var(--ink)}
+.edbtn[aria-pressed="true"]{border-color:var(--gold);box-shadow:inset 0 0 0 1px var(--gold);background:var(--gold-soft)}
+.edbtn strong{font-size:1rem}
+.edbtn span{font-size:.82rem;color:var(--muted)}
+.edbtn em{font-style:normal;font-size:.75rem;color:var(--fan)}
+.bigsearch{position:relative}
+.bigsearch input{width:100%;font-size:1.05rem;padding:14px 14px 14px 44px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.bigsearch svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:20px;height:20px;stroke:var(--muted);fill:none}
+.quick{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.quick button{border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:5px 12px;cursor:pointer;font-size:.88rem;color:var(--ink)}
+.tiles{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+.tile{border:1px solid var(--line);background:var(--panel);border-radius:12px;padding:16px;cursor:pointer;text-align:left;display:grid;gap:6px;color:var(--ink)}
+.tile:hover{border-color:var(--accent)}
+.tile .ti{display:flex;gap:10px;align-items:center;font-weight:700;font-size:1.05rem}
+.tile .ti svg{width:26px;height:26px;fill:none;stroke:var(--accent);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.tile p{margin:0;color:var(--muted);font-size:.9rem}
+.tile .n{font:400 .75rem var(--f-mono);color:var(--muted)}
+.homefoot{color:var(--muted);font-size:.85rem;text-align:center}
 /* ---- Ornamentos ---- */
-.brandrow{display:flex;gap:10px;align-items:center}
-.brandrow .seal{width:42px;height:42px;flex:none;border-radius:9px;background:var(--ink);display:grid;place-items:center}
+.brandrow{display:flex;gap:10px;align-items:center;min-width:0;flex:0 1 auto}
+.brandrow .seal{width:42px;height:42px;flex:none;border-radius:9px;background:#1d1a22;display:grid;place-items:center}
 .brandrow .seal svg{width:34px;height:34px}
 .nocturne{position:relative;margin:0 0 18px;border-radius:10px;overflow:hidden;background:linear-gradient(180deg,var(--sky1),var(--sky2));min-height:118px;display:flex;align-items:flex-end}
 .nocturne svg.scene{position:absolute;inset:0;width:100%;height:100%}
@@ -156,17 +201,21 @@ nav.cats button svg{width:16px;height:16px;vertical-align:-3px;margin-right:6px;
   <div class="wrap">
     <div class="brandrow"><span class="seal" aria-hidden="true"><svg viewBox="0 0 40 40"><text x="20" y="27" text-anchor="middle" font-family="IM Fell English SC, Georgia, serif" font-size="26" fill="#ece8f0">C</text><path d="M20 28c-2.4 2.7-2.6 5-1.3 6.2 1 .9 2.6.9 3.6 0 1.3-1.2 1.1-3.5-1.3-6.2z" fill="#e0707f"/><rect x="2.5" y="2.5" width="35" height="35" rx="7" fill="none" stroke="#d8b25a" stroke-width="1.5"/></svg></span><h1 class="brand">Códice de las Noches<small>Reglas de Vampiro: Edad Oscura por edición</small></h1></div>
     <div class="search"><svg viewBox="0 0 24 24" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
-      <input id="q" type="search" placeholder="Buscar poder, senda, regla… (p. ej. Majestad, frenesí, Huesos)" aria-label="Buscar"></div>
+      <input id="q" type="search" maxlength="80" autocomplete="off" placeholder="Buscar poder, senda, regla… (p. ej. Majestad, frenesí, Huesos)" aria-label="Buscar"></div>
     <div class="edpick" id="edpick"><span class="lbl">Jugamos con</span></div>
-    <div class="toggles">
-      <label><input type="checkbox" id="onlyMine"> Solo nuestra edición</label>
-      <label><input type="checkbox" id="showPending"> Ver ediciones sin manual</label>
+    <div class="tools">
+      <button class="iconbtn" type="button" id="themeBtn" aria-label="Cambiar tema"></button>
+      <details class="opts"><summary class="iconbtn" aria-label="Opciones"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>Opciones</summary>
+        <div class="panel">
+          <label><input type="checkbox" id="onlyMine"> Mostrar solo nuestra edición</label>
+          <label><input type="checkbox" id="showPending"> Ver también ediciones sin manual</label>
+        </div></details>
     </div>
   </div>
   <div class="wrap"><nav class="cats" id="cats" aria-label="Secciones"></nav></div>
 </header>
 
-<main class="wrap">
+<main class="wrap" id="main">
   <aside class="idx" id="idx" aria-label="Índice"></aside>
   <section class="content" id="content">
     <select class="idxsel" id="idxsel" aria-label="Elegir grupo"></select>
@@ -179,11 +228,12 @@ nav.cats button svg{width:16px;height:16px;vertical-align:-3px;margin-right:6px;
 const DATA=JSON.parse(document.getElementById('data').textContent);
 const ED=DATA.editions, E=DATA.entries;
 const EDMAP=Object.fromEntries(ED.map(e=>[e.id,e]));
-const CATS=["Disciplinas","Senderos y Virtudes","Creación y sistemas","Otros juegos (cruces)","Fuentes"].filter(c=>c==="Fuentes"||E.some(e=>e.cat===c));
+const CATS=["Inicio","Disciplinas","Senderos y Virtudes","Creación y sistemas","Otros juegos (cruces)","Fuentes"].filter(c=>c==="Fuentes"||c==="Inicio"||E.some(e=>e.cat===c));
 const store={get(k,d){try{const v=localStorage.getItem('codice.'+k);return v===null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem('codice.'+k,JSON.stringify(v))}catch(e){}}};
-let S={mine:store.get('mine','eov'),only:store.get('only',false),pending:store.get('pending',false),cat:store.get('cat','Disciplinas'),group:store.get('group',null),q:''};
+let S={mine:store.get('mine','eov'),only:store.get('only',false)===true,pending:store.get('pending',false)===true,cat:'Inicio',group:null,q:''};
+if(!EDMAP[S.mine]) S.mine='eov';
 const $=s=>document.querySelector(s);
-const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const fold=s=>String(s).normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
 // "ldn" versions belong to edition eov
 function verFor(e,ed){ if(ed==='eov'){ return e.v.eov||e.v.ldn||null } return e.v[ed]||null }
@@ -217,7 +267,7 @@ function groupsOf(cat){
 }
 function renderIdx(){
   const idx=$('#idx'),sel=$('#idxsel');idx.innerHTML='';sel.innerHTML='';
-  if(S.q||S.cat==='Fuentes'){idx.hidden=true;sel.hidden=true;return} idx.hidden=false;sel.hidden=false;
+  const noidx=!!(S.q||S.cat==='Fuentes'||S.cat==='Inicio'); $('#main').classList.toggle('noidx',noidx); if(noidx){idx.hidden=true;sel.hidden=true;return} idx.hidden=false;sel.hidden=false;
   const gs=groupsOf(S.cat); const all=gs.flatMap(x=>x.items.map(i=>i[0]));
   if(!all.includes(S.group)) S.group=all[0];
   gs.forEach(sec=>{ if(sec.h){const h=document.createElement('h3');h.textContent=sec.h;idx.appendChild(h);const og=document.createElement('optgroup');og.label=sec.h;sel.appendChild(og)}
@@ -255,7 +305,7 @@ function entryHTML(e){
 }
 
 // ---- Ornamentos: iconos, sigilos, escena nocturna y susurros (frases propias) ----
-const CATICON={"Disciplinas":'<path d="M12 3c-3 4-5 6.5-5 9.5a5 5 0 0 0 10 0C17 9.5 15 7 12 3z"/>',"Senderos y Virtudes":'<path d="M5 21c3-6 1-9 4-13s7-2 7-5"/><circle cx="16" cy="3" r="1"/><path d="M3 21h18"/>',"Creación y sistemas":'<path d="M4 20l9-9M13 11c2-6 6-8 7-8-0 1-2 5-8 7"/><path d="M4 20l2-5"/>',"Otros juegos (cruces)":'<path d="M4 7c3 2 5 2 8 0 3 2 5 2 8 0v4c0 5-4 8-8 9-4-1-8-4-8-9z"/><path d="M9 12h.01M15 12h.01"/>',"Fuentes":'<path d="M4 5c3-1 5-1 8 1 3-2 5-2 8-1v14c-3-1-5-1-8 1-3-2-5-2-8-1z"/><path d="M12 6v14"/>'};
+const CATICON={"Inicio":'<path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-5h4v5"/>',"Disciplinas":'<path d="M12 3c-3 4-5 6.5-5 9.5a5 5 0 0 0 10 0C17 9.5 15 7 12 3z"/>',"Senderos y Virtudes":'<path d="M5 21c3-6 1-9 4-13s7-2 7-5"/><circle cx="16" cy="3" r="1"/><path d="M3 21h18"/>',"Creación y sistemas":'<path d="M4 20l9-9M13 11c2-6 6-8 7-8-0 1-2 5-8 7"/><path d="M4 20l2-5"/>',"Otros juegos (cruces)":'<path d="M4 7c3 2 5 2 8 0 3 2 5 2 8 0v4c0 5-4 8-8 9-4-1-8-4-8-9z"/><path d="M9 12h.01M15 12h.01"/>',"Fuentes":'<path d="M4 5c3-1 5-1 8 1 3-2 5-2 8-1v14c-3-1-5-1-8 1-3-2-5-2-8-1z"/><path d="M12 6v14"/>'};
 const G={
  drop:'<path d="M12 3c-3 4-5 6.5-5 9.5a5 5 0 0 0 10 0C17 9.5 15 7 12 3z"/>',
  eye:'<path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
@@ -287,7 +337,7 @@ const G={
  fire2:'<path d="M12 3c-2 4 2 5 0 9M8 8c-3 4-2 13 4 13s7-9 4-13"/>',
 };
 const SIG={"Animalismo":"wolf","Auspex":"eye","Celeridad":"bolt","Dementación":"spiral","Dominación":"crown","Extinción":"scorpion","Fortaleza":"shield","Mortis/Nigromancia":"skull","Obtenebración":"tentacle","Ofuscación":"mask","Potencia":"fist","Presencia":"rose","Protean":"paw","Quimerismo":"star","Serpentis":"snake","Taumaturgia":"flame","Vicisitud":"bone","Abombwe":"paw","Bardo":"hourglass","Daimonion":"horn","Mytherceria":"star","Ogham":"tree","Temporis":"hourglass","Valeren":"eye","Vuelo":"wing","Hechicería Assamita":"star","Hechicería Koldúnica":"fire2","Hechicería Setita":"snake","Misticismo Abismal":"tentacle","Poderes combinados":"drop",
- "Reglas de Caminos":"path","Frenesí y Rötschreck":"fire2","Caminos principales":"cross","Senderos":"path","Caminos de clan (menores)":"crown","Guerra y batallas":"sword","Méritos y Defectos":"star","Habilidades nuevas":"quill","Facciones y sociedad":"crown","Creación de personaje":"quill","Experiencia":"hourglass","Generación":"drop","Clanes":"shield","Disciplinas: reglas":"book"};
+ "Reglas de Caminos":"path","Frenesí y Rötschreck":"fire2","Caminos principales":"cross","Senderos":"path","Caminos de clan (menores)":"crown","Guerra y batallas":"sword","Méritos y Defectos":"star","Habilidades nuevas":"quill","Facciones y sociedad":"crown","Creación de personaje":"quill","Experiencia":"hourglass","Generación":"drop","Clanes":"shield","Disciplinas: reglas":"book","Inicio":"drop","Fuentes":"book"};
 const sigil=g=>`<span class="sigil" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${G[SIG[g]]||G.drop}</svg></span>`;
 const WHISPERS=["La noche es larga y la sangre, escasa: elige bien tus dones.","Cada poder tiene un precio; la Bestia siempre cobra.","Los antiguos recuerdan cada regla que olvidaste.","Que la vela no se apague antes del alba.","El Narrador ve más de lo que tu sire te contó.","Un Camino se pierde de punto en punto, y se recupera de siglo en siglo.","Bajo la Cruz y bajo la luna, la sangre manda.","Ningún príncipe perdona un dado mal tirado.","Lee la página antes de jurar por la regla.","Hasta la Bestia respeta a quien conoce su jerarquía.","El sol no negocia: el Rötschreck tampoco.","La sangre de Caín es antigua; sus reglas, cambiantes."];
 const hash=s=>[...s].reduce((a,c)=>(a*31+c.charCodeAt(0))>>>0,7);
@@ -320,6 +370,7 @@ function renderView(){
     res.sort((a,b)=>(fold(b.title).includes(q)?1:0)-(fold(a.title).includes(q)?1:0));
     v.innerHTML=headBlock(`Resultados de «${S.q}»`,`${res.length} entradas${res.length>80?' (se muestran las 80 primeras)':''}`,null)+legend()+(res.length?res.slice(0,80).map(entryHTML).join(''):'<p class="empty">Nada coincide. Prueba con una sola palabra o sin tildes.</p>');return }
   if(S.cat==='Fuentes'){ v.innerHTML=sourcesHTML(); return }
+  if(S.cat==='Inicio'){ v.innerHTML=homeHTML(); bindHome(); return }
   const items=E.filter(e=>e.cat===S.cat&&e.group===S.group);
   const subs=[...new Set(items.map(e=>e.sub||''))];
   const intro={'Caminos principales':'Los cinco Caminos y su jerarquía de pecados (del 10, el más leve, al 1, el más grave).','Senderos':'Variantes de cada Camino. En EO:V 2003 solo se nombran; VEO21 les da jerarquía propia.','Caminos de clan (menores)':'Oficiales en EO:V gracias al Libro del Narrador; VEO21 añade Enjambre, Caín y Lilith.'}[S.group]||'';
@@ -333,15 +384,49 @@ function sourcesHTML(){
   ED.map(ed=>`<div class="edcard">${ed.status==='cargado'?waxSVG:''}<div class="st" style="color:${ed.status==='cargado'?(ed.fan?'var(--fan)':'var(--gold)'):'var(--muted)'}">${ed.status==='cargado'?(ed.fan?'Cargado · no oficial':(ed.partial?'Solo suplementos':'Cargado')):'Manual pendiente'}</div><h5>${esc(ed.name)}</h5><div style="color:var(--muted);font-size:.88rem">${esc(ed.pub)}</div>${ed.books.length?'<ul>'+ed.books.map(b=>'<li>'+esc(b)+'</li>').join('')+'</ul>':'<p style="font-size:.9rem;color:var(--muted)">Cuando añadas el PDF a la carpeta, se rellenará su columna.</p>'}</div>`).join('')+
   `</div><p style="max-width:70ch;margin-top:18px"><b>Instalar en el móvil:</b> abre esta página en el navegador y elige «Añadir a pantalla de inicio» (Safari: botón Compartir; Chrome: menú ⋮). Después funciona sin conexión.</p><p style="color:var(--muted);max-width:70ch;margin-top:12px">Las Disciplinas de nivel 1-5 de VEO21 copian el texto de EO:V 2003 y se marcan como «Mismo texto». Las diferencias reales están en los poderes de nivel 6 a 9, en las líneas de sangre, en las nuevas hechicerías, en las jerarquías propias de cada sendero y en algunas reglas de Caminos (excomunión, maestros, umbrales de iniciado, devoto y virtuoso).</p>`;
 }
-function render(){ renderEdPick(); renderCats(); renderIdx(); renderView(); }
+
+// ---- Portada ----
+const CATDESC={"Disciplinas":"Poderes por nivel, con su tirada y su página. Del Animalismo a la Vicisitud, hechicerías incluidas.","Senderos y Virtudes":"Caminos, senderos y su jerarquía de pecados. Virtudes, degeneración, frenesí y Rötschreck.","Creación y sistemas":"Creación de personaje, experiencia, generación, Méritos, guerra y más.","Otros juegos (cruces)":"Lo que Hadas y Mago dicen de los vampiros.","Fuentes":"Qué manuales hay cargados de cada edición."};
+const QUICK=["Majestad","Frenesí","Degeneración","Generación","Celeridad","Camino de la Humanidad","Taumaturgia rituales","Rötschreck"];
+function homeHTML(){
+  const n=c=>E.filter(e=>e.cat===c).length;
+  return headBlock('Bienvenido al Códice','Consulta las reglas de Vampiro: Edad Oscura y compáralas entre ediciones.','Inicio')+`<div class="home">
+  <section><div class="step"><b>1</b><h3>¿Con qué edición jugáis?</h3></div><p class="hint">La marcamos en dorado en todas las fichas. Puedes cambiarla cuando quieras desde arriba.</p>
+   <div class="edgrid">${ED.map(ed=>`<button type="button" class="edbtn" data-ed="${ed.id}" aria-pressed="${S.mine===ed.id}"><strong>${esc(ed.short==='1ª ed.'?'1ª edición':ed.short)}</strong><span>${esc(ed.pub)}</span>${ed.fan?'<em>Obra de fans, no oficial</em>':ed.status!=='cargado'?'<em>Manual aún no cargado</em>':ed.partial?'<em>Solo suplementos</em>':''}</button>`).join('')}</div></section>
+  <section><div class="step"><b>2</b><h3>Busca lo que necesitas</h3></div>
+   <div class="bigsearch"><svg viewBox="0 0 24 24" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="q2" type="search" maxlength="80" autocomplete="off" placeholder="Escribe un poder, un camino o una regla…" aria-label="Buscar"></div>
+   <div class="quick">${QUICK.map(q=>`<button type="button" data-q="${esc(q)}">${esc(q)}</button>`).join('')}</div></section>
+  <section><div class="step"><b>3</b><h3>…o explora por secciones</h3></div>
+   <div class="tiles">${CATS.filter(c=>c!=='Inicio').map(c=>`<button type="button" class="tile" data-cat="${esc(c)}"><span class="ti"><svg viewBox="0 0 24 24">${CATICON[c]||''}</svg>${esc(c)}</span><p>${CATDESC[c]||''}</p>${c!=='Fuentes'?`<span class="n">${n(c)} fichas</span>`:''}</button>`).join('')}</div></section>
+  <p class="homefoot">Cada ficha indica el libro y la página. Ante una duda en partida, manda el manual.</p></div>`;
+}
+function goCat(c){S.cat=c;S.group=null;S.q='';$('#q').value='';render();window.scrollTo(0,0)}
+function doSearch(q){S.q=q;$('#q').value=q;render();window.scrollTo(0,0)}
+function bindHome(){
+  document.querySelectorAll('.edbtn').forEach(b=>b.onclick=()=>{const ed=EDMAP[b.dataset.ed];S.mine=ed.id;store.set('mine',ed.id);if(ed.status!=='cargado'&&!S.pending){S.pending=true;$('#showPending').checked=true;store.set('pending',true)}render()});
+  document.querySelectorAll('.tile').forEach(b=>b.onclick=()=>goCat(b.dataset.cat));
+  document.querySelectorAll('.quick button').forEach(b=>b.onclick=()=>doSearch(b.dataset.q));
+  const q2=$('#q2'); q2.onkeydown=e=>{if(e.key==='Enter'&&q2.value.trim())doSearch(q2.value.trim())};
+  let t2;q2.oninput=()=>{clearTimeout(t2);t2=setTimeout(()=>{if(q2.value.trim().length>=3)doSearch(q2.value.trim())},700)};
+}
+// ---- Tema ----
+const THEMES=[['system','Tema: automático','<circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/>'],['light','Tema: claro','<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4 12H2M22 12h-2M5 5l1.5 1.5M17.5 17.5 19 19M5 19l1.5-1.5M17.5 6.5 19 5"/>'],['dark','Tema: oscuro','<path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/>']];
+function applyTheme(t){ if(t==='system') document.documentElement.removeAttribute('data-theme'); else document.documentElement.setAttribute('data-theme',t);
+  const th=THEMES.find(x=>x[0]===t)||THEMES[0]; const b=$('#themeBtn'); b.innerHTML=`<svg viewBox="0 0 24 24">${th[2]}</svg><span>${th[1].replace('Tema: ','')}</span>`; b.title=th[1]+' (pulsa para cambiar)';
+  const dark=t==='dark'||(t==='system'&&matchMedia('(prefers-color-scheme: dark)').matches);
+  const m=document.querySelector('meta[name="theme-color"]'); if(m) m.setAttribute('content',dark?'#1d1a22':'#f7f8f4'); }
+let THEME=store.get('theme','system'); if(!['system','light','dark'].includes(THEME)) THEME='system'; applyTheme(THEME);
+$('#themeBtn').onclick=()=>{const i=THEMES.findIndex(x=>x[0]===THEME);THEME=THEMES[(i+1)%THEMES.length][0];store.set('theme',THEME);applyTheme(THEME)};
+document.querySelector('.brand').onclick=()=>goCat('Inicio');
+function render(){ document.body.classList.toggle('is-home',S.cat==='Inicio'&&!S.q); renderEdPick(); renderCats(); renderIdx(); renderView(); }
 $('#onlyMine').checked=S.only; $('#showPending').checked=S.pending;
 $('#onlyMine').onchange=e=>{S.only=e.target.checked;store.set('only',S.only);render()};
 $('#showPending').onchange=e=>{S.pending=e.target.checked;store.set('pending',S.pending);render()};
-let t;$('#q').oninput=e=>{clearTimeout(t);t=setTimeout(()=>{S.q=e.target.value.trim();render()},160)};
+let t;$('#q').oninput=e=>{clearTimeout(t);t=setTimeout(()=>{S.q=e.target.value.trim().slice(0,80);render()},160)};
 render();
 </script>
 <script>
-if('serviceWorker' in navigator && location.protocol.startsWith('http')){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}))}
+if('serviceWorker' in navigator && location.protocol==='https:'){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js',{scope:'./'}).catch(()=>{}))}
 </script>
 </body>
 </html>
