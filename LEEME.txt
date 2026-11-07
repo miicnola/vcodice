@@ -1,0 +1,48 @@
+CÓDICE DE LAS NOCHES · Cómo compartirlo sin Claude
+===================================================
+
+Esta carpeta es una web completa (una «app web instalable»). No necesita
+Claude, ni servidor propio, ni cuentas para quien la usa. Una vez abierta
+la primera vez, funciona sin conexión.
+
+1) PUBLICARLA (una sola vez; 5 minutos)
+---------------------------------------
+Hay que subir la carpeta "codice-de-las-noches" a un alojamiento web
+gratuito. Cualquiera de estos sirve:
+
+  · Netlify Drop:  https://app.netlify.com/drop
+    Arrastra la carpeta a la página. Te da una dirección del tipo
+    https://nombre.netlify.app. Si creas una cuenta gratuita, la web
+    queda publicada de forma permanente y puedes cambiarle el nombre.
+
+  · GitHub Pages:  crea un repositorio público, sube los archivos de la
+    carpeta y activa Settings > Pages. Dirección:
+    https://tu-usuario.github.io/nombre-del-repo/
+
+  · Cloudflare Pages: Workers & Pages > Create > Pages > Upload assets.
+
+2) INSTALARLA EN EL MÓVIL (cada jugador)
+----------------------------------------
+  · Android (Chrome): abre la dirección > menú ⋮ > «Instalar aplicación»
+    o «Añadir a pantalla de inicio».
+  · iPhone (Safari): abre la dirección > botón Compartir >
+    «Añadir a pantalla de inicio».
+  Aparece un icono «Códice» y se abre como una app, también sin cobertura.
+
+3) ACTUALIZARLA
+---------------
+Cuando haya una versión nueva, vuelve a subir la carpeta al mismo sitio
+(en Netlify: Deploys > arrastrar la carpeta). Los móviles la recogen
+solos la próxima vez que abran la app con conexión.
+
+ALTERNATIVA SIN PUBLICAR: Codice-de-las-Noches.html
+---------------------------------------------------
+Es la misma app en un solo archivo. Se puede enviar por WhatsApp o por
+correo y funciona en ordenadores y en Android (ábrelo con Chrome).
+En iPhone NO funciona bien abierto desde «Archivos», porque iOS no
+ejecuta la parte interactiva; allí usa la versión publicada.
+
+Nota: los textos son resúmenes con referencia a libro y página para
+uso de tu grupo de juego. Los manuales son propiedad de sus editores
+(White Wolf / Paradox, La Factoría de Ideas, Nosolorol); evita
+publicarla de forma abierta y masiva.
