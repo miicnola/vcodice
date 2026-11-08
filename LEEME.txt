@@ -35,6 +35,13 @@ Cuando haya una versión nueva, vuelve a subir la carpeta al mismo sitio
 (en Netlify: Deploys > arrastrar la carpeta). Los móviles la recogen
 solos la próxima vez que abran la app con conexión.
 
+FICHAS DE PERSONAJE («Mi personaje»)
+-------------------------------------
+Cada jugador guarda sus fichas en su propio móvil (no se envían a ningún
+sitio). Para pasar una ficha a otro móvil o al Narrador: «Exportar a
+archivo» y, en el otro dispositivo, «Importar archivo». Si se borran los
+datos del navegador, se pierden las fichas: exportadlas de vez en cuando.
+
 ALTERNATIVA SIN PUBLICAR: Codice-de-las-Noches.html
 ---------------------------------------------------
 Es la misma app en un solo archivo. Se puede enviar por WhatsApp o por
